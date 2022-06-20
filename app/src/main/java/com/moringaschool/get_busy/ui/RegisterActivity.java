@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.moringaschool.get_busy.R;
+
 public class RegisterActivity extends AppCompatActivity {
 
     @Override
