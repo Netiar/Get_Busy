@@ -1,11 +1,14 @@
 package com.moringaschool.get_busy.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 import android.util.Log;
 
+import com.moringaschool.get_busy.Adapter.RecyclerViewAdapter;
 import com.moringaschool.get_busy.R;
+import com.moringaschool.get_busy.databinding.ActivityEducationalBinding;
 import com.moringaschool.get_busy.models.ResultOpenDb;
 import com.moringaschool.get_busy.models.Result__1;
 import com.moringaschool.get_busy.network.EducationalApi;
@@ -21,13 +24,17 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EducationalActivity extends AppCompatActivity {
+    RecyclerViewAdapter adapter;
+    ActivityEducationalBinding binding;
 
     public List<Result__1> allItemsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_educational);
+        binding = ActivityEducationalBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
 
         allItemsList=new ArrayList<>();
 
@@ -41,6 +48,9 @@ public class EducationalActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
 
                     allItemsList = response.body().getResults();
+                    Log.d("TAG", "onResponse: " + allItemsList);
+
+
 
                 }
 
@@ -50,6 +60,11 @@ public class EducationalActivity extends AppCompatActivity {
                 Log.e("Error Message", "onFailure: ",t );
             }
         });
+        adapter = new RecyclerViewAdapter(this, allItemsList);
+        binding.lvp.setAdapter(adapter);
+        binding.lvp.setLayoutManager(new LinearLayoutManager(this));
+        binding.lvp.setHasFixedSize(true);
+
 
     }
 }
