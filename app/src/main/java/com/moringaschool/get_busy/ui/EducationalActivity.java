@@ -47,6 +47,7 @@ public class EducationalActivity extends AppCompatActivity {
             public void onResponse(Call<ResultOpenDb> call, Response<ResultOpenDb> response) {
                 if (response.isSuccessful()) {
 
+
                     allItemsList = response.body().getResults();
                     Log.d("TAG", "onResponse: " + allItemsList);
                     adapter = new RecyclerViewAdapter(EducationalActivity.this, allItemsList);
