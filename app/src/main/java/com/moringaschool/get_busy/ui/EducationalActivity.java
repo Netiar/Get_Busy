@@ -49,6 +49,10 @@ public class EducationalActivity extends AppCompatActivity {
 
                     allItemsList = response.body().getResults();
                     Log.d("TAG", "onResponse: " + allItemsList);
+                    adapter = new RecyclerViewAdapter(EducationalActivity.this, allItemsList);
+                    binding.lvp.setAdapter(adapter);
+                    binding.lvp.setLayoutManager(new LinearLayoutManager(EducationalActivity.this));
+                    binding.lvp.setHasFixedSize(true);
 
 
 
@@ -60,10 +64,7 @@ public class EducationalActivity extends AppCompatActivity {
                 Log.e("Error Message", "onFailure: ",t );
             }
         });
-        adapter = new RecyclerViewAdapter(this, allItemsList);
-        binding.lvp.setAdapter(adapter);
-        binding.lvp.setLayoutManager(new LinearLayoutManager(this));
-        binding.lvp.setHasFixedSize(true);
+
 
 
     }
