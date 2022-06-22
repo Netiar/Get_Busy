@@ -5,22 +5,46 @@
     android:id="@+id/parentCardId"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    tools:context=".ui.FavouritesActivity"
     android:padding="8dp"
     app:cardCornerRadius="10dp"
     app:cardElevation="10dp"
     android:layout_margin="8dp"
-    tools:context=".ui.FavouritesActivity"
-   >
+
+    >
+
     <TextView
-        android:id="@+id/actSaved"
+        android:id="@+id/actName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Saved Activity"
+        android:layout_alignParentStart="true"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:layout_centerHorizontal="false"
         android:layout_marginStart="5dp"
         android:layout_marginTop="7dp"
-       />
+        />
+    <TextView
+        android:id="@+id/actType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/actName"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="7dp"
+        android:text="Type Activity"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/actParticipants"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/actType"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="7dp"
+        android:text="Participants"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>
