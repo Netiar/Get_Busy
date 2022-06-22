@@ -8,42 +8,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.get_busy.R;
+import com.moringaschool.get_busy.constants.Constants;
+import com.moringaschool.get_busy.databinding.FragmentQuestBinding;
+import com.moringaschool.get_busy.models.Result__1;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link QuestFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class QuestFragment extends Fragment {
+    Result__1 question;
+    FragmentQuestBinding fragBind;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public QuestFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment QuestFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static QuestFragment newInstance(String param1, String param2) {
+
+    public static QuestFragment newInstance(Result__1 quest) {
         QuestFragment fragment = new QuestFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putSerializable("ques", quest);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -52,15 +42,38 @@ public class QuestFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            question = (Result__1) getArguments().getSerializable("ques");
+
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        fragBind = FragmentQuestBinding.inflate(inflater, container, false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_quest, container, false);
+        View v = fragBind.getRoot();
+
+        fragBind.catName.setText("Category Name " +question.getCategory());
+        fragBind.questName.setText("1. " +question.getQuestion());
+        fragBind.questAns.setText("CorrectAnswer is: "+ question.getCorrectAnswer());
+        fragBind.questType.setText("This is a " +question.getType() + " Choice question");
+        fragBind.questMode.setText("Level difficulty: "+question.getDifficulty());
+        fragBind.questAns1.setText("1. " +question.getIncorrectAnswers().get(0));
+        fragBind.questAns2.setText("2. " +question.getIncorrectAnswers().get(1));
+        fragBind.questAns3.setText("3. " +question.getIncorrectAnswers().get(2));
+
+        fragBind.save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.EDUCATIONAL_QUESTS);
+                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                String userId = currentUser.getUid();
+
+                ref.child(userId).setValue(question);
+            }
+        });
+
+        return v;
     }
 }
