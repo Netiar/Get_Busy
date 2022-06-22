@@ -8,5 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="magenta">#B70569</color>
+    <color name="magenta_Light">#FFC5E6</color>
 
 </resources>
