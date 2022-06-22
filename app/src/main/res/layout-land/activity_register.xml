@@ -17,7 +17,7 @@
 
         <ImageView
             android:id="@+id/tagofwar"
-            android:layout_width="413dp"
+            android:layout_width="match_parent"
             android:layout_height="241dp"
             app:layout_constraintBottom_toTopOf="@+id/userPhone"
             app:layout_constraintEnd_toEndOf="parent"
