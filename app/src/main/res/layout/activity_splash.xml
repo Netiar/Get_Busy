@@ -19,17 +19,26 @@
         app:lottie_rawRes="@raw/rotate_shape" />
 
     <TextView
-        android:id="@+id/welcomeText"
+        android:id="@+id/getBizzy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/fontdiner_swanky"
         android:text="Get Busy"
         android:textColor="@color/magenta"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@id/fill"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/punchLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:text="Dodge The Boredom, and Jump on in Find an activity to do!"
+        android:textColor="#151515"
+        android:textSize="20sp" />
+
+
+
+
 
 
 </LinearLayout>
