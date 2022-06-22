@@ -118,7 +118,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter you mobile Number"
+                android:hint="Enter you mobile number"
                 android:inputType="number" />
 
 
@@ -144,7 +144,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter your Email Address" />
+                android:hint="Enter your email address" />
 
 
         </com.google.android.material.textfield.TextInputLayout>

@@ -49,11 +49,6 @@ public class RandomActivity extends AppCompatActivity {
         setContentView(R.layout.result_view);
         ButterKnife.bind(this);
 
-        Window window = RandomActivity.this.getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(ContextCompat.getColor(RandomActivity.this, R.color.magenta));
-
         FirebaseApp.initializeApp(this);
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getInstance().getReference("BoredActivities");

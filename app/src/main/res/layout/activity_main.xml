@@ -29,21 +29,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Powered by Bored API"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_anchor="@+id/textView"
-        app:layout_anchorGravity="bottom|center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.0" />
+<!--    <TextView-->
+<!--        android:id="@+id/textView2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:text="Powered by Bored API"-->
+<!--        android:textSize="15sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_anchor="@+id/textView"-->
+<!--        app:layout_anchorGravity="bottom|center"-->
+<!--        tools:layout_editor_absoluteX="131dp"-->
+<!--        tools:layout_editor_absoluteY="250dp" />-->
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/material_button"
@@ -52,17 +49,37 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:backgroundTint="#B70569"
-        android:text="Hop In!"
         android:onClick="StartRandomActivity"
+        android:text="Try an Activity!"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.534" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.314" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/material_button2"
+        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#B70569"
+        android:onClick="StartEducationalActivity"
+        android:text="Learn something New!"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:cornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.63"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/material_button"
+        app:layout_constraintVertical_bias="0.253"
+        tools:ignore="OnClick" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
