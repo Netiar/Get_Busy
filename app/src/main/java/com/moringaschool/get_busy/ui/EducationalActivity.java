@@ -78,6 +78,7 @@ public class EducationalActivity extends AppCompatActivity implements View.OnCli
             public void onResponse(Call<ResultOpenDb> call, Response<ResultOpenDb> response) {
                 if (response.isSuccessful()) {
 
+
                     allItemsList = response.body().getResults();
 
                     //add to questions arraylist
@@ -105,6 +106,10 @@ public class EducationalActivity extends AppCompatActivity implements View.OnCli
 
 
                     Log.d("TAG", "onResponse: " + allItemsList);
+                    adapter = new RecyclerViewAdapter(EducationalActivity.this, allItemsList);
+                    binding.lvp.setAdapter(adapter);
+                    binding.lvp.setLayoutManager(new LinearLayoutManager(EducationalActivity.this));
+                    binding.lvp.setHasFixedSize(true);
 
                     adapter = new RecyclerViewAdapter(EducationalActivity.this, allItemsList);
                     binding.lvp.setAdapter(adapter);
@@ -124,6 +129,7 @@ public class EducationalActivity extends AppCompatActivity implements View.OnCli
                 Log.e("Error Message", "onFailure: ",t );
             }
         });
+
 
     }
 
