@@ -3,13 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-
         <entry key="app/src/main/res/drawable/img.xml" value="0.215" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.333786231884058" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.333786231884058" />
         <entry key="app/src/main/res/layout/activity_educational.xml" value="0.12864583333333332" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1984375" />
-
+        <entry key="app/src/main/res/layout/activity_question.xml" value="0.11851851851851852" />
+        <entry key="app/src/main/res/layout/activity_random.xml" value="0.11851851851851852" />
+        <entry key="app/src/main/res/layout/fragment_quest.xml" value="0.333786231884058" />
+        <entry key="app/src/main/res/layout/gif_strip.xml" value="0.33" />
       </map>
     </option>
   </component>
