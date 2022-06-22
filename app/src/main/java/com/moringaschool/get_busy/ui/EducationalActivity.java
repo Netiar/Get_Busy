@@ -57,7 +57,7 @@ public class EducationalActivity extends AppCompatActivity implements View.OnCli
         binding.cat5.setOnClickListener(this);
         binding.submit.setOnClickListener(this);
 
-        getResponse(call6);
+        getResponse(call1);
     }
 
     private void getResponse(Call<ResultOpenDb> call) {

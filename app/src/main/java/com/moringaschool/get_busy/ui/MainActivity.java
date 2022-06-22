@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, RandomActivity.class);
         startActivity(intent);
     }
-    public void StartEducationalActivity(){
+    public void StartEducationalActivity(View view) {
         Intent intent = new Intent(this, EducationalActivity.class);
         startActivity(intent);
     }

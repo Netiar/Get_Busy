@@ -37,24 +37,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     static int  userScore = 0;
 
-
     public RecyclerViewAdapter(Context context, List<Result__1> list) {
         this.context = context;
         this.list = list;
     }
-
     @NonNull
     @Override
     public RecyclerViewAdapter.MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.gif_strip, parent, false);
         return new MyHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.MyHolder holder, int position) {
         holder.bindData(list.get(position));
     }
-
     @Override
     public int getItemCount() {
         return list.size();
@@ -108,13 +104,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             Answer4.setText(result.get(3));
 
             this.ques = datum;
-
         }
 
         public int returnScore(View view){
-//            userScore=0;//score becomes 1 if any of the questions is correct;
-//            boolean checked = ((RadioButton) view).isChecked();
-//            if (view==Answer1 || view==Answer2 || view==Answer3 || view==Answer4 ){
+            //checks
                 if (Answer1.isChecked()){
                     String userAnswer = ((RadioButton) view).getText().toString();
 //                Toast.makeText(context, userAnswer, Toast.LENGTH_SHORT).show();
@@ -140,27 +133,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     String userAnswer = ((RadioButton) view).getText().toString();
 //                Toast.makeText(context, userAnswer, Toast.LENGTH_SHORT).show();
                     if (userAnswer==ques.getCorrectAnswer()){
-                        Toast.makeText(context, "yes", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context, "yes", Toast.LENGTH_SHORT).show();
                         userScore++;
                     }
                 }
-
-//            }
-
-//            if(view == Answer1 || view==Answer2){
-//                if (checked){
-//                    userScore++;
-//                    selectedAns=
-//                    Toast.makeText(context, view.getText().toString(), Toast.LENGTH_SHORT).show();
-//
-//                }else{
-//                    return userScore;
-//                }
-//            }
             return userScore;
         }
-
-
         @Override
         public void onClick(View v) {
             if (v==readMore || v==itemView){
@@ -170,7 +148,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 intent.putExtra("quests", (Serializable) list);
                 intent.putExtra("position", position);
                 context.startActivity(intent);
-
             }
             if(v==save){
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.EDUCATIONAL_QUESTS);
