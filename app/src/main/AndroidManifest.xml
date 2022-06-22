@@ -35,6 +35,9 @@
             android:name=".ui.RandomActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.UserQuestionsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.LoginActivity"
             android:exported="true">
             <intent-filter>
