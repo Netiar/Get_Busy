@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -44,16 +46,24 @@ public class UserQuestionsActivity extends AppCompatActivity {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot snap1:snapshot.getChildren()){
-                    Result__1 quest1 = snap1.getValue(Result__1.class);
-                    userQuestions.add(quest1);
+                if (snapshot!=null){
+                    for(DataSnapshot snap1:snapshot.getChildren()){
+                        Result__1 quest1 = snap1.getValue(Result__1.class);
+                        userQuestions.add(quest1);
+                    }
+                    adapter.notifyDataSetChanged();
 
+                    binding.lvp.setAdapter(adapter);
+                    binding.lvp.setLayoutManager(new LinearLayoutManager(UserQuestionsActivity.this));
+                    binding.lvp.setHasFixedSize(true);
+                    successful();
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "Snapshot is empty.", Toast.LENGTH_SHORT).show();
+                    unSuccessful();
                 }
-                adapter.notifyDataSetChanged();
 
-                binding.lvp.setAdapter(adapter);
-                binding.lvp.setLayoutManager(new LinearLayoutManager(UserQuestionsActivity.this));
-                binding.lvp.setHasFixedSize(true);
+
 
             }
 
@@ -66,4 +76,23 @@ public class UserQuestionsActivity extends AppCompatActivity {
 
 
     }
+
+    public void successful(){
+        binding.scroll.setVisibility(View.VISIBLE);
+        binding.bored.setVisibility(View.VISIBLE);
+        binding.welcome.setVisibility(View.VISIBLE);
+        binding.lvp.setVisibility(View.VISIBLE);
+        binding.submit.setVisibility(View.VISIBLE);
+        binding.progress.setVisibility(View.GONE);
+    }
+
+    public void unSuccessful(){
+        binding.bored.setVisibility(View.GONE);
+        binding.welcome.setVisibility(View.VISIBLE);
+        binding.welcome.setText("Please try Again Later");
+        binding.lvp.setVisibility(View.GONE);
+        binding.submit.setVisibility(View.GONE);
+        binding.progress.setVisibility(View.GONE);
+    }
+
 }

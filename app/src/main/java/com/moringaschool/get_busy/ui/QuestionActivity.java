@@ -25,12 +25,12 @@ public class QuestionActivity extends AppCompatActivity {
         setContentView(questBind.getRoot());
 
         Intent newIntent = getIntent();
-        int position = newIntent.getIntExtra("position",0);
         allQuests = (List<Result__1>) newIntent.getSerializableExtra("quests");
 
         adapter = new PagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, allQuests);
+        int position = newIntent.getIntExtra("position",0);
 
-        questBind.viewPager.setCurrentItem(position);
         questBind.viewPager.setAdapter(adapter);
+        questBind.viewPager.setCurrentItem(position);
     }
 }

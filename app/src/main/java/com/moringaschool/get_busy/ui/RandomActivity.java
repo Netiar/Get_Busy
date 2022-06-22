@@ -22,6 +22,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.get_busy.R;
+import com.moringaschool.get_busy.constants.Constants;
 import com.moringaschool.get_busy.models.Result;
 import com.moringaschool.get_busy.network.BoredApi;
 import com.moringaschool.get_busy.network.BoredApiClient;
@@ -56,8 +57,8 @@ public class RandomActivity extends AppCompatActivity {
 
         FirebaseApp.initializeApp(this);
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getInstance().getReference("BoredActivities");
-        DatabaseReference userRef = firebaseDatabase.getReference("BoredActivities");
+        DatabaseReference databaseReference = firebaseDatabase.getInstance().getReference(Constants.RANDOM_ACTS);
+        DatabaseReference userRef = firebaseDatabase.getReference(Constants.RANDOM_ACTS);
 
         bottomAppBar = findViewById(R.id.bottom_bar);
         setSupportActionBar(bottomAppBar);

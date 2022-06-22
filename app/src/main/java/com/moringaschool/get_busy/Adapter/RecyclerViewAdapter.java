@@ -26,12 +26,17 @@ import com.moringaschool.get_busy.ui.QuestionActivity;
 import java.io.Serializable;
 import java.net.CookieHandler;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyHolder> {
+
     private Context context;
     List<Result__1> list;
-    int userScore = 0;
+
+    static int  userScore = 0;
+
 
     public RecyclerViewAdapter(Context context, List<Result__1> list) {
         this.context = context;
@@ -43,13 +48,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public RecyclerViewAdapter.MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.gif_strip, parent, false);
         return new MyHolder(view);
-
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.MyHolder holder, int position) {
         holder.bindData(list.get(position));
-
     }
 
     @Override
@@ -57,14 +60,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return list.size();
     }
 
+    public static int getScore(){
+        return userScore;
+    }
+
     public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+
         TextView  categoryQuestions;
-         RadioButton Answer1,  Answer2, Answer3, Answer4;
-         MaterialButton save, readMore;
-        List<String> result; //incorrect answers
+        RadioButton Answer1,  Answer2, Answer3, Answer4;
+        MaterialButton save, readMore;
+        List<String> result; //CHOICES LIST
         Result__1 ques;
-
-
+        int position;
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
@@ -75,36 +82,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             Answer4 = itemView.findViewById(R.id.radio_ans4);
             save = itemView.findViewById(R.id.save);
             readMore = itemView.findViewById(R.id.readMore);
-
+            position = getLayoutPosition();
+            itemView.setOnClickListener(this);
 
             Answer1.setOnClickListener(this);
             Answer2.setOnClickListener(this);
             Answer3.setOnClickListener(this);
             Answer4.setOnClickListener(this);
-            readMore.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int position = getLayoutPosition();
-                    Intent intent = new Intent(context, QuestionActivity.class);
-                    intent.putExtra("quests", (Serializable) list);
-                    intent.putExtra("position", position);
-                    context.startActivity(intent);
-
-                }
-            });
-
-            save.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.EDUCATIONAL_QUESTS);
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    String userId = user.getUid();
-
-                    ref.child(userId).child(ques.getCategory()).setValue(ques);
-                    Toast.makeText(context, "Successfully saved", Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(context, "score" + userScore, Toast.LENGTH_SHORT).show();
-                }
-            });
+            readMore.setOnClickListener(this);
+            save.setOnClickListener(this);
 
             result= new ArrayList<>();
 
@@ -112,36 +98,92 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
        public void bindData(Result__1 datum) {
 
             categoryQuestions.setText(datum.getQuestion());
-            Answer1.setText(datum.getCorrectAnswer());
-
             result = datum.getIncorrectAnswers();
+            result.add(datum.getCorrectAnswer());
+            Collections.shuffle(result);
 
-
-            Answer2.setText(result.get(0));
-            Answer3.setText(result.get(1));
-            Answer4.setText(result.get(2));
+            Answer1.setText(result.get(0));
+            Answer2.setText(result.get(1));
+            Answer3.setText(result.get(2));
+            Answer4.setText(result.get(3));
 
             this.ques = datum;
 
         }
 
         public int returnScore(View view){
-
-            boolean checked = ((RadioButton) view).isChecked();
-            if(view == Answer1){
-                if (checked){
-                    userScore++;
-
-                }else{
-                    return userScore;
+//            userScore=0;//score becomes 1 if any of the questions is correct;
+//            boolean checked = ((RadioButton) view).isChecked();
+//            if (view==Answer1 || view==Answer2 || view==Answer3 || view==Answer4 ){
+                if (Answer1.isChecked()){
+                    String userAnswer = ((RadioButton) view).getText().toString();
+//                Toast.makeText(context, userAnswer, Toast.LENGTH_SHORT).show();
+                    if (userAnswer==ques.getCorrectAnswer()){
+                        Toast.makeText(context, "yes", Toast.LENGTH_SHORT).show();
+                        userScore++;
+                    }
+                } else if (Answer2.isChecked()){
+                    String userAnswer = ((RadioButton) view).getText().toString();
+//                Toast.makeText(context, userAnswer, Toast.LENGTH_SHORT).show();
+                    if (userAnswer==ques.getCorrectAnswer()){
+                        Toast.makeText(context, "yes", Toast.LENGTH_SHORT).show();
+                        userScore++;
+                    }
+                } else if (Answer3.isChecked()){
+                    String userAnswer = ((RadioButton) view).getText().toString();
+//                Toast.makeText(context, userAnswer, Toast.LENGTH_SHORT).show();
+                    if (userAnswer==ques.getCorrectAnswer()){
+                        Toast.makeText(context, "yes", Toast.LENGTH_SHORT).show();
+                        userScore++;
+                    }
+                } else if (Answer4.isChecked()){
+                    String userAnswer = ((RadioButton) view).getText().toString();
+//                Toast.makeText(context, userAnswer, Toast.LENGTH_SHORT).show();
+                    if (userAnswer==ques.getCorrectAnswer()){
+                        Toast.makeText(context, "yes", Toast.LENGTH_SHORT).show();
+                        userScore++;
+                    }
                 }
-            }
+
+//            }
+
+//            if(view == Answer1 || view==Answer2){
+//                if (checked){
+//                    userScore++;
+//                    selectedAns=
+//                    Toast.makeText(context, view.getText().toString(), Toast.LENGTH_SHORT).show();
+//
+//                }else{
+//                    return userScore;
+//                }
+//            }
             return userScore;
         }
 
+
         @Override
         public void onClick(View v) {
-            returnScore(v);
+            if (v==readMore || v==itemView){
+//                list2=list;
+                int position = getLayoutPosition();
+                Intent intent = new Intent(context, QuestionActivity.class);
+                intent.putExtra("quests", (Serializable) list);
+                intent.putExtra("position", position);
+                context.startActivity(intent);
+
+            }
+            if(v==save){
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.EDUCATIONAL_QUESTS);
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String userId = user.getUid();
+
+                ref.child(userId).push().setValue(ques);
+                Toast.makeText(context, "Successfully saved", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, "score" + userScore, Toast.LENGTH_SHORT).show();
+            }
+            if (v==Answer1 || v==Answer2 || v==Answer3 || v==Answer4){
+                returnScore(v);
+            }
         }
 
     }

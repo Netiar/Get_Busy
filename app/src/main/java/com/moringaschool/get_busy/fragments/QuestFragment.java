@@ -55,24 +55,27 @@ public class QuestFragment extends Fragment {
         View v = fragBind.getRoot();
 
         fragBind.catName.setText("Category Name " +question.getCategory());
-        fragBind.questName.setText("1. " +question.getQuestion());
-        fragBind.questAns.setText("CorrectAnswer is: "+ question.getCorrectAnswer());
+        fragBind.questName.setText(question.getQuestion());
+        fragBind.questAns.setText("Correct Answer is: "+ question.getCorrectAnswer());
         fragBind.questType.setText("This is a " +question.getType() + " Choice question");
         fragBind.questMode.setText("Level difficulty: "+question.getDifficulty());
+
+
         fragBind.questAns1.setText("1. " +question.getIncorrectAnswers().get(0));
         fragBind.questAns2.setText("2. " +question.getIncorrectAnswers().get(1));
         fragBind.questAns3.setText("3. " +question.getIncorrectAnswers().get(2));
+//        fragBind.questAns4.setText("4. " +question.getCorrectAnswer());
 
-        fragBind.save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.EDUCATIONAL_QUESTS);
-                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-                String userId = currentUser.getUid();
-
-                ref.child(userId).setValue(question);
-            }
-        });
+//        fragBind.save.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.EDUCATIONAL_QUESTS);
+//                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+//                String userId = currentUser.getUid();
+//
+//                ref.child(userId).setValue(question);
+//            }
+//        });
 
         return v;
     }
