@@ -4,9 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:background="@color/magenta_Light"
+    android:background="@color/magenta_Lightoo"
     tools:context=".ui.LoginActivity">
+
+    <ImageView
+        android:id="@+id/cycler"
+        android:layout_width="437dp"
+        android:layout_height="281dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cycle" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,7 +28,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="80dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:background="@drawable/img_register"
@@ -34,7 +43,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:src="@drawable/splash"
                 app:layout_constraintBottom_toTopOf="@id/logWelcome"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -46,10 +54,11 @@
                 android:id="@+id/logWelcome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/fontdiner_swanky"
+                android:fontFamily="@font/bubblegum_sans"
+
                 android:text="Get Busy"
                 android:textColor="@color/magenta"
-                android:textSize="40sp"
+                android:textSize="50sp"
                 app:layout_constraintBottom_toTopOf="@+id/logSlogan"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -155,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:text="SignUp"
-                app:backgroundTint="#FF5722"
+                app:backgroundTint="#D0417e"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
