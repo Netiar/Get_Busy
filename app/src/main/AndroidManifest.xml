@@ -20,6 +20,9 @@
             android:name=".ui.MainActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.FavouritesActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.EducationalActivity"
             android:exported="false" />
         <activity
