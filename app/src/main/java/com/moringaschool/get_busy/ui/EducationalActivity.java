@@ -1,15 +1,18 @@
 package com.moringaschool.get_busy.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.moringaschool.get_busy.Adapter.RecyclerViewAdapter;
 import com.moringaschool.get_busy.R;
 import com.moringaschool.get_busy.databinding.ActivityEducationalBinding;
@@ -58,6 +61,7 @@ public class EducationalActivity extends AppCompatActivity implements View.OnCli
         binding.cat5.setOnClickListener(this);
         binding.submit.setOnClickListener(this);
         binding.submit.setOnClickListener(this);
+        setNavigation(binding.bottom);
 
         getResponse(call1);
     }
@@ -112,7 +116,7 @@ public class EducationalActivity extends AppCompatActivity implements View.OnCli
         }
         else if (v == binding.submit){
             userScore = RecyclerViewAdapter.getScore();
-            Toast.makeText(this, "Your Score is" + userScore, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Your Score is " + userScore, Toast.LENGTH_LONG).show();
         }
         else{
             Toast.makeText(this, "Keep calm", Toast.LENGTH_SHORT).show();
@@ -120,6 +124,7 @@ public class EducationalActivity extends AppCompatActivity implements View.OnCli
     }
 
     public void successful(){
+        binding.bottom.setVisibility(View.VISIBLE);
         binding.scroll.setVisibility(View.VISIBLE);
         binding.bored.setVisibility(View.VISIBLE);
         binding.welcome.setVisibility(View.VISIBLE);
@@ -134,5 +139,36 @@ public class EducationalActivity extends AppCompatActivity implements View.OnCli
         binding.lvp.setVisibility(View.GONE);
         binding.submit.setVisibility(View.GONE);
         binding.progress.setVisibility(View.GONE);
+        binding.bottom.setVisibility(View.GONE);
+
+
+    }
+
+    public void setNavigation(BottomNavigationView bottom){
+        bottom.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.home:
+                        startActivity(new Intent(EducationalActivity.this, MainActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.education:
+                        return true;
+                    case R.id.favourites:
+                        startActivity(new Intent(EducationalActivity.this, UserQuestionsActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.back:
+                        Intent intent = new Intent(EducationalActivity.this, LoginActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        finish();
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
     }
 }

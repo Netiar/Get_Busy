@@ -78,11 +78,13 @@ public class UserQuestionsActivity extends AppCompatActivity {
     }
 
     public void successful(){
-        binding.scroll.setVisibility(View.VISIBLE);
-        binding.bored.setVisibility(View.VISIBLE);
+        binding.scroll.setVisibility(View.GONE);
+        binding.bored.setVisibility(View.GONE);
         binding.welcome.setVisibility(View.VISIBLE);
+        binding.welcome.setText("Below is a list of your saved Questions");
+        binding.welcome.setTextSize(20);
         binding.lvp.setVisibility(View.VISIBLE);
-        binding.submit.setVisibility(View.VISIBLE);
+        binding.submit.setVisibility(View.GONE);
         binding.progress.setVisibility(View.GONE);
     }
 
