@@ -39,7 +39,7 @@ public class EducationalActivityInstrumentationTest {
 
     @Test
     public void checkButtonVisibility(){
-        onView(withId(R.id.submit)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.submit)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
     }
 
     @Test
