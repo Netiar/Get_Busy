@@ -3,14 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/img.xml" value="0.215" />
-        <entry key="app/src/main/res/drawable/person.xml" value="0.1635" />
-        <entry key="app/src/main/res/layout-v23/activity_login.xml" value="0.18072916666666666" />
+        <entry key="app/src/main/res/drawable/img.xml" value="0.25" />
+        <entry key="app/src/main/res/layout-land/activity_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/activity_register.xml" value="0.15299823633156967" />
+        <entry key="app/src/main/res/layout-land/activity_splash.xml" value="0.15299823633156967" />
         <entry key="app/src/main/res/layout/activity_educational.xml" value="0.12864583333333332" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.2912621359223301" />
+        <entry key="app/src/main/res/layout/activity_favourites.xml" value="0.1984375" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1984375" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.35810113519091846" />
-        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_random.xml" value="0.1984375" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.18072916666666666" />
+        <entry key="app/src/main/res/layout/fragment_quest.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/gif_strip.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_saved.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/result_view.xml" value="0.1984375" />
+        <entry key="app/src/main/res/menu/bottombarmenu.xml" value="0.1984375" />
       </map>
     </option>
   </component>
