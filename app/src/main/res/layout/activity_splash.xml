@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splashpng"
+    android:background="#FFE3E3"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".ui.SplashActivity">
@@ -12,6 +12,7 @@
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="206dp"
         android:layout_height="214dp"
+        android:layout_margin="20dp"
         android:layout_gravity="center"
         android:id="@+id/lottie"
         app:lottie_autoPlay="true"
@@ -31,7 +32,8 @@
         android:id="@+id/punchLine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="32dp"
+        android:layout_margin="8dp"
+        android:padding="32dp"
         android:text="Dodge The Boredom, and Jump on in Find an activity to do!"
         android:textAlignment="center"
         android:textColor="#151515"

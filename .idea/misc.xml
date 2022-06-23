@@ -4,14 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/img.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_educational.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_favourites.xml" value="0.1984375" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1984375" />
         <entry key="app/src/main/res/layout/activity_question.xml" value="0.12777777777777777" />
+        <entry key="app/src/main/res/layout-land/activity_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/activity_register.xml" value="0.15299823633156967" />
+        <entry key="app/src/main/res/layout-land/activity_splash.xml" value="0.15299823633156967" />
+        <entry key="app/src/main/res/layout/activity_educational.xml" value="0.12864583333333332" />
+        <entry key="app/src/main/res/layout/activity_favourites.xml" value="0.1984375" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1984375" />
         <entry key="app/src/main/res/layout/activity_random.xml" value="0.1984375" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.18072916666666666" />
-        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.18072916666666666" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_quest.xml" value="0.5" />
         <entry key="app/src/main/res/layout/gif_strip.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_saved.xml" value="0.5" />

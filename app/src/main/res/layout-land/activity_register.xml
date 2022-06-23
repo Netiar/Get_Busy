@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:backgroundTint="@color/white"
+    android:background="@color/white"
     tools:context=".ui.RegisterActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,47 +17,42 @@
 
         <ImageView
             android:id="@+id/tagofwar"
-            android:layout_width="match_parent"
-            android:layout_height="241dp"
-            app:layout_constraintBottom_toTopOf="@+id/userPhone"
+            android:layout_width="400dp"
+            android:layout_height="200dp"
+            app:layout_constraintBottom_toTopOf="@+id/welcomeText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/tagofwar" />
+            app:srcCompat="@drawable/underwaterselfierafiki" />
 
         <TextView
             android:id="@+id/welcomeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:background="@color/magenta"
             android:fontFamily="@font/bubblegum_sans"
-            android:padding="10dp"
+            android:padding="5dp"
             android:text="Get Busy"
-            android:textColor="@color/white"
-            android:textSize="60sp"
-            app:layout_constraintBottom_toTopOf="@id/fill"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tagofwar" />
+            android:textColor="@color/magenta"
+            android:textSize="42sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tagofwar" />
 
         <TextView
             android:id="@+id/fill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="10dp"
             android:background="@color/magenta"
             android:padding="8dp"
-            android:text="Please Fill in your details too access our random activities"
+            android:text="Please Fill in your details to access our random activities"
             android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@id/userName"
+            app:layout_constraintHorizontal_bias="0.47"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/welcomeText" />
+            app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/signImage"
@@ -83,7 +78,6 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="24dp"
             app:boxBackgroundColor="@color/white"
-
             app:layout_constraintBottom_toTopOf="@+id/userPhone"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -94,7 +88,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter you full name" />
+                android:hint="Enter your full name" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -118,7 +112,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter you mobile number"
+                android:hint="Enter your mobile number"
                 android:inputType="number" />
 
 
@@ -134,7 +128,6 @@
             android:layout_marginRight="24dp"
             app:boxBackgroundColor="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/userSeat"
-
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/userPhone"
