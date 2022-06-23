@@ -120,10 +120,22 @@ public class RandomActivity extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id= item.getItemId();
-        if (id == R.id.favourites){
+        int id = item.getItemId();
+        if (id == R.id.favourites) {
             startActivity(new Intent(RandomActivity.this, FavouritesActivity.class)); //fav activity
-                return true;
+            return true;
+        } else if (id == R.id.education) {
+            startActivity(new Intent(RandomActivity.this, EducationalActivity.class)); //fav activity
+            return true;
+        }else if (id == R.id.home) {
+            startActivity(new Intent(RandomActivity.this, MainActivity.class)); //fav activity
+            return true;
+        }else if (id == R.id.back) {
+            Intent intent = new Intent(RandomActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
