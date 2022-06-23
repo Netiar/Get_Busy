@@ -16,16 +16,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-
-            <ImageView
-                android:id="@+id/cycler"
-                android:layout_width="match_parent"
-                android:layout_height="281dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/cycle" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -40,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="30dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:background="@drawable/img_register"
@@ -51,9 +41,10 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/logImage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="376dp"
+                android:layout_height="200dp"
                 android:layout_marginTop="16dp"
+                android:src="@drawable/reactpana"
                 app:layout_constraintBottom_toTopOf="@id/logWelcome"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -107,7 +98,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:drawableTint="@color/magenta"
-                    android:hint="Enter your Email Address" />
+                    android:hint="Enter your email address" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
