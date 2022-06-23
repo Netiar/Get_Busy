@@ -3,6 +3,7 @@ package com.moringaschool.get_busy.ui;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -56,6 +57,7 @@ public class EducationalActivity extends AppCompatActivity implements View.OnCli
         binding.cat4.setOnClickListener(this);
         binding.cat5.setOnClickListener(this);
         binding.submit.setOnClickListener(this);
+        binding.submit.setOnClickListener(this);
 
         getResponse(call1);
     }
@@ -91,7 +93,7 @@ public class EducationalActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         if (v == binding.cat1){
-            getResponse(call1);
+            getResponse(call6);
             return;
         }else if (v == binding.cat2){
             getResponse(call2);
@@ -105,7 +107,10 @@ public class EducationalActivity extends AppCompatActivity implements View.OnCli
         }else if (v == binding.cat5){
             getResponse(call5);
             return;
-        }else if (v == binding.submit){
+        } else if(v == binding.cat6){
+            startActivity(new Intent(this, UserQuestionsActivity.class));
+        }
+        else if (v == binding.submit){
             userScore = RecyclerViewAdapter.getScore();
             Toast.makeText(this, "Your Score is" + userScore, Toast.LENGTH_SHORT).show();
         }
