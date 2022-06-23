@@ -65,22 +65,25 @@
 
     </RadioGroup>
     <com.google.android.material.button.MaterialButton
+        app:cornerRadius="20dp"
         android:id="@+id/save"
         android:text="Save question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/image"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/answers"
+        app:layout_constraintLeft_toRightOf="@id/readMore"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/readMore"
+        app:cornerRadius="20dp"
         android:text="Read More"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/image"
-        app:layout_constraintTop_toBottomOf="@id/image"
+        app:layout_constraintTop_toBottomOf="@id/answers"
         app:layout_constraintRight_toLeftOf="@id/save"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
