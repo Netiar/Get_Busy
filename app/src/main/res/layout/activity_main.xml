@@ -1,85 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg2"
-    android:backgroundTintMode="add"
-    android:clickable="true"
-    android:clipChildren="false"
-    android:focusable="auto"
-    android:focusableInTouchMode="true"
-    android:orientation="vertical"
     tools:context=".ui.MainActivity">
 
     <TextView
+        app:layout_constraintVertical_chainStyle="spread_inside"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
-        android:fontFamily="@font/bubbler_one"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        android:text="Get Busy!"
-        android:textColor="#B70569"
-        android:textSize="68sp"
+        android:layout_margin="16dp"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Get Busy!"
+        app:layout_constraintBottom_toTopOf="@+id/material_button2"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView2"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center_horizontal"-->
-<!--        android:text="Powered by Bored API"-->
-<!--        android:textSize="15sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_anchor="@+id/textView"-->
-<!--        app:layout_anchorGravity="bottom|center"-->
-<!--        tools:layout_editor_absoluteX="131dp"-->
-<!--        tools:layout_editor_absoluteY="250dp" />-->
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/material_button"
-        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:backgroundTint="#B70569"
-        android:onClick="StartRandomActivity"
-        android:text="Try an Activity!"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:cornerRadius="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:src="@drawable/pp3"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginEnd="20dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintLeft_toRightOf="@id/textView"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.314" />
-
+        app:layout_constraintBottom_toTopOf="@id/recView2"/>
     <com.google.android.material.button.MaterialButton
+        android:backgroundTint="@color/white"
+        android:textColor="@color/magenta"
+        android:layout_margin="8dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:id="@+id/material_button2"
-        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#B70569"
-        android:onClick="StartEducationalActivity"
-        android:text="Learn something New!"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:cornerRadius="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.63"
+        android:text="CLick for more"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toTopOf="@id/recView2"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/material_button"
-        app:layout_constraintVertical_bias="0.253"
-        tools:ignore="OnClick" />
+        app:layout_constraintTop_toBottomOf="@id/textView" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:background="@drawable/usiku_sako"
+        android:id="@+id/recView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/material_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/material_button2">
+
+        <TextView
+            android:layout_marginTop="14dp"
+            android:id="@+id/activity_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Activity Name"
+            android:textColor="@color/magenta"
+            android:textAlignment="textStart"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@id/animation_view"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/animation_view"
+            app:layout_constraintBottom_toTopOf="@id/activity"/>
+
+        <TextView
+            android:id="@+id/activity"
+            android:layout_marginEnd="16dp"
+            android:textStyle="italic"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Activity Name"
+            app:layout_constraintLeft_toRightOf="@id/animation_view"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_name"
+            app:layout_constraintBottom_toTopOf="@id/activity_part"/>
+
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_view"
+            android:layout_width="198dp"
+            android:layout_height="100dp"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_part"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/activity_name"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/threat" />
+
+        <TextView
+            android:layout_marginBottom="14dp"
+            android:id="@+id/activity_part"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Activity Name"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/animation_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/animation_view"
+            app:layout_constraintTop_toBottomOf="@id/activity"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/material_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:text="Quiz Topics"
+        app:layout_constraintBottom_toTopOf="@+id/recView1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recView2" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recView1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/material_button"
+        app:layout_constraintBottom_toTopOf="@+id/bottom"/>
+
+
+
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
+        app:menu="@menu/bottombarmenu"
+        android:background="@color/magenta"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recView1"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
 
