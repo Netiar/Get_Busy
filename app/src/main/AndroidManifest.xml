@@ -17,6 +17,9 @@
         android:theme="@style/Theme.Get_Busy"
         tools:targetApi="31">
         <activity
+            android:name=".ui.AnsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.SplashActivity"
             android:exported="true">
             <intent-filter>
@@ -48,8 +51,8 @@
             android:exported="false" />
         <activity
             android:name=".ui.LoginActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
