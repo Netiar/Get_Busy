@@ -78,7 +78,7 @@ public class UserQuestionsActivity extends AppCompatActivity {
     }
 
     public void successful(){
-        binding.scroll.setVisibility(View.GONE);
+
         binding.bored.setVisibility(View.GONE);
         binding.welcome.setVisibility(View.VISIBLE);
         binding.welcome.setText("Below is a list of your saved Questions");
