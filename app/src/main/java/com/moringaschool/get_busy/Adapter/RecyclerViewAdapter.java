@@ -110,30 +110,25 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             //checks
                 if (Answer1.isChecked()){
                     String userAnswer = ((RadioButton) view).getText().toString();
-//                Toast.makeText(context, userAnswer, Toast.LENGTH_SHORT).show();
                     if (userAnswer==ques.getCorrectAnswer()){
-                        Toast.makeText(context, "yes", Toast.LENGTH_SHORT).show();
+
                         userScore++;
                     }
                 } else if (Answer2.isChecked()){
                     String userAnswer = ((RadioButton) view).getText().toString();
-//                Toast.makeText(context, userAnswer, Toast.LENGTH_SHORT).show();
                     if (userAnswer==ques.getCorrectAnswer()){
-                        Toast.makeText(context, "yes", Toast.LENGTH_SHORT).show();
+
                         userScore++;
                     }
                 } else if (Answer3.isChecked()){
                     String userAnswer = ((RadioButton) view).getText().toString();
-//                Toast.makeText(context, userAnswer, Toast.LENGTH_SHORT).show();
                     if (userAnswer==ques.getCorrectAnswer()){
-                        Toast.makeText(context, "yes", Toast.LENGTH_SHORT).show();
+
                         userScore++;
                     }
                 } else if (Answer4.isChecked()){
                     String userAnswer = ((RadioButton) view).getText().toString();
-//                Toast.makeText(context, userAnswer, Toast.LENGTH_SHORT).show();
                     if (userAnswer==ques.getCorrectAnswer()){
-//                        Toast.makeText(context, "yes", Toast.LENGTH_SHORT).show();
                         userScore++;
                     }
                 }
@@ -142,7 +137,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         @Override
         public void onClick(View v) {
             if (v==readMore || v==itemView){
-//                list2=list;
                 int position = getLayoutPosition();
                 Intent intent = new Intent(context, QuestionActivity.class);
                 intent.putExtra("quests", (Serializable) list);
@@ -156,7 +150,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                 ref.child(userId).push().setValue(ques);
                 Toast.makeText(context, "Successfully saved", Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(context, "score" + userScore, Toast.LENGTH_SHORT).show();
             }
             if (v==Answer1 || v==Answer2 || v==Answer3 || v==Answer4){
                 returnScore(v);
