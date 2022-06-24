@@ -66,7 +66,7 @@ public class RecAdapter extends RecyclerView.Adapter<RecAdapter.MyHolder> {
         public void bindData(Result__1 datum) {
 
             categoryQuestion.setText(datum.getCategory());
-            level.setText("This category contains " + datum.getType() + "questions of a " + datum.getDifficulty()+ " difficulty level");
+            level.setText("This category contains " + datum.getType() + " questions of a " + datum.getDifficulty()+ " difficulty level");
             this.ques = datum;
             this.category = datum.getCategory();
 
