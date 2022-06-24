@@ -53,9 +53,9 @@ public class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.myViewHold
 
         }
         public void BindData(Result result){
-            activityName.setText(result.getActivity().toString());
-            activityType.setText(result.getType().toString());
-            activityParticipant.setText(result.getParticipants().toString());
+            activityName.setText("Activity Name: " + result.getActivity().toString());
+            activityType.setText("Activity Category: " +result.getType().toString());
+            activityParticipant.setText("Participants: " +result.getParticipants().toString());
         }
     }
 
