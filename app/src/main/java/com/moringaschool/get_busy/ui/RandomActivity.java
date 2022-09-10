@@ -3,19 +3,26 @@ package com.moringaschool.get_busy.ui;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.get_busy.R;
+import com.moringaschool.get_busy.constants.Constants;
 import com.moringaschool.get_busy.models.Result;
 import com.moringaschool.get_busy.network.BoredApi;
 import com.moringaschool.get_busy.network.BoredApiClient;
@@ -28,20 +35,14 @@ import retrofit2.Response;
 
 public class RandomActivity extends AppCompatActivity {
 
-    @BindView(R.id.textViewTextMultiLine)
-    TextView mTextViewTextMultiLin;
-    @BindView(R.id.options_display)
-    TextView mOptions_display;
-    @BindView(R.id.like)
-    ExtendedFloatingActionButton mLike;
-    @BindView(R.id.reloadRandom)
-    FloatingActionButton mReloadRandom;
+    @BindView(R.id.textViewTextMultiLine) TextView mTextViewTextMultiLin;
+    @BindView(R.id.options_display) TextView mOptions_display;
+    @BindView(R.id.like) ExtendedFloatingActionButton mLike;
+    @BindView(R.id.reloadRandom) FloatingActionButton mReloadRandom;
 
+    BottomAppBar bottomAppBar;
     BoredApi api;
-
     Result result;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,18 +50,17 @@ public class RandomActivity extends AppCompatActivity {
         setContentView(R.layout.result_view);
         ButterKnife.bind(this);
 
-        Window window = RandomActivity.this.getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(ContextCompat.getColor(RandomActivity.this, R.color.magenta));
-
         FirebaseApp.initializeApp(this);
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getInstance().getReference("BoredActivities");
-        DatabaseReference userRef = firebaseDatabase.getReference("BoredActivities");
+        DatabaseReference databaseReference = firebaseDatabase.getInstance().getReference(Constants.RANDOM_ACTS);
+        DatabaseReference userRef = firebaseDatabase.getReference(Constants.RANDOM_ACTS);
+
+        bottomAppBar = findViewById(R.id.bottom_bar);
+        setSupportActionBar(bottomAppBar);
 
         api = BoredApiClient.getClient();
         Call<Result> call = api.getRandomItem();
+
         call.enqueue(new Callback<Result>() {
             @Override
             public void onResponse(Call<Result> call, Response<Result> response) {
@@ -101,17 +101,42 @@ public class RandomActivity extends AppCompatActivity {
                 });
             }
         });
-
         mLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                databaseReference.child(result.getKey()).setValue(result);
-
                 //add item to firebase db
-
+                databaseReference.child(result.getKey()).setValue(result);
+                Toast.makeText(RandomActivity.this, "Activity added to favourites.",
+                            Toast.LENGTH_SHORT).show();
             }
         });
     }
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.bottombarmenu, menu);
+        return true;
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.favourites) {
+            startActivity(new Intent(RandomActivity.this, FavouritesActivity.class)); //fav activity
+            return true;
+        } else if (id == R.id.education) {
+            startActivity(new Intent(RandomActivity.this, EducationalActivity.class)); //fav activity
+            return true;
+        }else if (id == R.id.home) {
+            startActivity(new Intent(RandomActivity.this, MainActivity.class)); //fav activity
+            return true;
+        }else if (id == R.id.back) {
+            Intent intent = new Intent(RandomActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}

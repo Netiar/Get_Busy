@@ -44,6 +44,6 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 finish(); //finish loading screen activity
             }
-        }, 4000);
+        }, 3500);
     }
 }
