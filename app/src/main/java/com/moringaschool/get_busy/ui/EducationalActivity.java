@@ -5,6 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.moringaschool.get_busy.Adapter.RecyclerViewAdapter;
 import com.moringaschool.get_busy.R;
@@ -23,11 +26,20 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EducationalActivity extends AppCompatActivity {
+public class EducationalActivity extends AppCompatActivity implements View.OnClickListener {
     RecyclerViewAdapter adapter;
     ActivityEducationalBinding binding;
+    int userScore;
+    Call<ResultOpenDb> call1, call2, call3, call4, call5, call6;
 
     public List<Result__1> allItemsList;
+
+    ArrayList<String>questions = new ArrayList<>();
+
+    ArrayList<String>correctAnswers = new ArrayList<>();
+
+    ArrayList<ArrayList<String>> choices = new ArrayList<ArrayList<String>>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,28 +47,80 @@ public class EducationalActivity extends AppCompatActivity {
         binding = ActivityEducationalBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
         allItemsList=new ArrayList<>();
+
 
         EducationalApi client = EducationalApiClient.getClient();
         //https://opentdb.com/api.php?amount=50&category=18&difficulty=medium&type=multiple
-        Call<ResultOpenDb> call = client.getAllItems(5,18,"medium","multiple"); //amount=1&category=27&difficulty=easy&type=multiple
+         call1 = client.getAllItems(5,18,"medium","multiple"); //amount=1&category=27&difficulty=easy&type=multiple
+         call2 = client.getAllItems(5,10,"medium","multiple"); //amount=1&category=27&difficulty=easy&type=multiple
+         call3 = client.getAllItems(5,12,"medium","multiple"); //amount=1&category=27&difficulty=easy&type=multiple
+         call4 = client.getAllItems(5,16,"medium","multiple"); //amount=1&category=27&difficulty=easy&type=multiple
+         call5 = client.getAllItems(5,17,"medium","multiple"); //amount=1&category=27&difficulty=easy&type=multiple
+         call6 = client.getAllItems(5,19,"medium","multiple"); //amount=1&category=27&difficulty=easy&type=multiple
 
-        call.enqueue(new Callback<ResultOpenDb>() {
+        binding.cat1.setOnClickListener(this);
+        binding.cat2.setOnClickListener(this);
+        binding.cat3.setOnClickListener(this);
+        binding.cat4.setOnClickListener(this);
+        binding.cat5.setOnClickListener(this);
+        binding.submit.setOnClickListener(this);
+
+        getResponse(call6);
+
+
+
+    }
+
+    private void getResponse(Call<ResultOpenDb> call) {
+        call.clone().enqueue(new Callback<ResultOpenDb>() {
             @Override
             public void onResponse(Call<ResultOpenDb> call, Response<ResultOpenDb> response) {
                 if (response.isSuccessful()) {
 
 
                     allItemsList = response.body().getResults();
+
+                    //add to questions arraylist
+                    for (int i=0; i<allItemsList.size();i++) {
+                        String question = allItemsList.get(i).getQuestion().toString();
+                        questions.add(question);
+                    }
+
+
+                    for (int i=0; i<allItemsList.size();i++) {
+                        String correctAns = allItemsList.get(i).getCorrectAnswer().toString();
+                        correctAnswers.add(correctAns);
+                    }
+
+                    for (int i=0; i<allItemsList.size();i++) {
+                        String correctAns = allItemsList.get(i).getCorrectAnswer().toString();
+                        String incorrectAns1 = allItemsList.get(i).getIncorrectAnswers().get(0).toString();
+                        String incorrectAns2 = allItemsList.get(i).getIncorrectAnswers().get(1).toString();
+                        String incorrectAns3 = allItemsList.get(i).getIncorrectAnswers().get(2).toString();
+
+                        String answers[] = {correctAns, incorrectAns1, incorrectAns2, incorrectAns3};
+                        Collections.shuffle(Arrays.asList(answers));
+                        choices.add(new ArrayList<String>(Arrays.asList(answers)));
+                    }
+
+
                     Log.d("TAG", "onResponse: " + allItemsList);
                     adapter = new RecyclerViewAdapter(EducationalActivity.this, allItemsList);
                     binding.lvp.setAdapter(adapter);
                     binding.lvp.setLayoutManager(new LinearLayoutManager(EducationalActivity.this));
                     binding.lvp.setHasFixedSize(true);
 
+                    adapter = new RecyclerViewAdapter(EducationalActivity.this, allItemsList);
+                    binding.lvp.setAdapter(adapter);
+                    binding.lvp.setLayoutManager(new LinearLayoutManager(EducationalActivity.this));
+                    binding.lvp.setHasFixedSize(true);
+                    successful();
 
 
+
+                }else{
+                    unSuccessful();
                 }
 
             }
@@ -67,6 +131,70 @@ public class EducationalActivity extends AppCompatActivity {
         });
 
 
+    }
 
+    public int returnScore(View view){
+        userScore = 0;
+        boolean checked = ((RadioButton) view).isChecked();
+        if(view.getId() == R.id.radio_ans1){
+            if (checked){
+                userScore++;
+
+            }else {
+                return userScore;
+            }
+        }else{
+            return userScore;
+        }
+
+        return userScore;
+
+    }
+
+
+
+    @Override
+    public void onClick(View v) {
+        if (v == binding.cat1){
+            getResponse(call1);
+            return;
+        }else if (v == binding.cat2){
+            getResponse(call2);
+            return;
+        }else if (v == binding.cat3){
+            getResponse(call3);
+            return;
+        }else if (v == binding.cat4){
+            getResponse(call4);
+            return;
+        }else if (v == binding.cat5){
+            getResponse(call5);
+            return;
+        }else if (v == binding.submit){
+            Toast.makeText(this, "Your Score is" + userScore, Toast.LENGTH_SHORT).show();
+
+        }
+        else{
+            Toast.makeText(this, "Keep calm", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void successful(){
+        binding.scroll.setVisibility(View.VISIBLE);
+        binding.bored.setVisibility(View.VISIBLE);
+        binding.welcome.setVisibility(View.VISIBLE);
+        binding.lvp.setVisibility(View.VISIBLE);
+        binding.submit.setVisibility(View.VISIBLE);
+        binding.progress.setVisibility(View.GONE);
+    }
+
+    public void unSuccessful(){
+        binding.bored.setVisibility(View.GONE);
+        binding.welcome.setVisibility(View.VISIBLE);
+        binding.welcome.setText("Please try Again Later");
+        binding.lvp.setVisibility(View.GONE);
+        binding.submit.setVisibility(View.GONE);
+        binding.progress.setVisibility(View.GONE);
     }
 }
